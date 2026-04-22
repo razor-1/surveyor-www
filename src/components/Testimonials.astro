@@ -1,0 +1,143 @@
+---
+const testimonials = [
+  {
+    quote: "We run customer satisfaction surveys monthly with 800+ responses. Codesift cut our analysis time from a full day to under an hour — and our monthly spend dropped from over $100 to under $15.",
+    name: "Sarah K.",
+    role: "Market Research Manager",
+    company: "Consumer Insights Agency",
+    initial: "S",
+    color: "#5E9CF5",
+  },
+  {
+    quote: "The custom codebook feature is what sold us. We define our own category hierarchy and Codesift applies it consistently across every response. The per-data pricing means we can run more studies without blowing the budget.",
+    name: "Dr. Marcus T.",
+    role: "UX Research Lead",
+    company: "Enterprise SaaS",
+    initial: "M",
+    color: "#9B7EF5",
+  },
+  {
+    quote: "I was skeptical, but the first time I compared my bill to what I'd have paid per-response, I was genuinely shocked. Codesift is now a permanent line item in every client proposal I write.",
+    name: "Priya N.",
+    role: "Independent Research Consultant",
+    company: "Freelance",
+    initial: "P",
+    color: "#4FCB8A",
+  },
+];
+---
+
+<section class="testimonials">
+  <div class="container">
+    <div class="test-header">
+      <p class="section-eyebrow">Testimonials</p>
+      <h2 class="section-title">Researchers who made<br>the switch</h2>
+    </div>
+
+    <div class="testimonials-grid">
+      {testimonials.map((t) => (
+        <div class="testimonial-card">
+          <div class="quote-mark" aria-hidden="true">"</div>
+          <blockquote class="quote-text">{t.quote}</blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar" style={`background: ${t.color}22; color: ${t.color}; border-color: ${t.color}33`}>
+              {t.initial}
+            </div>
+            <div>
+              <div class="author-name">{t.name}</div>
+              <div class="author-role">{t.role} · {t.company}</div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .test-header {
+    margin-bottom: 48px;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .testimonial-card {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .testimonial-card:hover {
+    border-color: var(--border);
+    background: var(--surface-3);
+  }
+
+  .quote-mark {
+    font-family: Georgia, serif;
+    font-size: 64px;
+    line-height: 0.6;
+    color: var(--amber);
+    opacity: 0.35;
+    user-select: none;
+    flex-shrink: 0;
+  }
+
+  .quote-text {
+    font-size: 15px;
+    line-height: 1.72;
+    color: var(--text-muted);
+    font-style: normal;
+    flex: 1;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 20px;
+  }
+
+  .author-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .author-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .author-role {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  @media (max-width: 900px) {
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+      max-width: 560px;
+    }
+  }
+</style>

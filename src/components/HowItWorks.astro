@@ -1,0 +1,165 @@
+---
+const steps = [
+  {
+    num: '01',
+    title: 'Upload your responses',
+    desc: 'Import a CSV or Excel file. Codesift works with any survey platform — Qualtrics, SurveyMonkey, Typeform, and more.',
+    icon: `<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 14V4M7 8l4-4 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 16v1a1 1 0 001 1h12a1 1 0 001-1v-1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>`,
+  },
+  {
+    num: '02',
+    title: 'AI assigns codes',
+    desc: 'Define your codebook or let Codesift AI generate your codes. AI reads each response, assigns one or more codes, and provides confidence scores.',
+    icon: `<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 6h14M4 11h10M4 16h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="17" cy="15" r="3.5" stroke="currentColor" stroke-width="1.5"/><path d="M19.5 17.5l2 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>`,
+  },
+  {
+    num: '03',
+    title: 'Export and act',
+    desc: 'Download coded data as CSV, Excel, or JSON. Every row includes the original response, assigned codes, and a summary — ready for analysis.',
+    icon: `<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 4v10M7 10l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 16v1a1 1 0 001 1h12a1 1 0 001-1v-1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>`,
+  },
+];
+---
+
+<section id="how-it-works" class="how">
+  <div class="container">
+    <div class="how-header">
+      <p class="section-eyebrow">How it works</p>
+      <h2 class="section-title">From raw responses<br>to coded data in minutes</h2>
+      <p class="section-subtitle">
+        No setup complexity, no training runs. Upload your data, define your
+        codes, and Codesift handles the rest.
+      </p>
+    </div>
+
+    <div class="steps">
+      {steps.map((step, i) => (
+        <div class="step">
+          <div class="step-number" aria-hidden="true">{step.num}</div>
+          <div class="step-icon-wrap">
+            <div class="step-icon" set:html={step.icon} />
+          </div>
+          <div class="step-body">
+            <h3 class="step-title">{step.title}</h3>
+            <p class="step-desc">{step.desc}</p>
+          </div>
+          {i < steps.length - 1 && (
+            <div class="step-connector" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14M15 8l4 4-4 4" stroke="var(--border)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .how {
+    background: var(--surface-1);
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .how-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .how-header .section-eyebrow {
+    justify-content: center;
+  }
+
+  .how-header .section-eyebrow::before {
+    display: none;
+  }
+
+  .how-header .section-subtitle {
+    margin: 16px auto 0;
+    max-width: 480px;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  .step {
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+    border-right: 1px solid var(--border-subtle);
+  }
+
+  .step:last-child {
+    border-right: none;
+  }
+
+  .step-number {
+    font-family: var(--font-display);
+    font-size: 64px;
+    font-weight: 800;
+    color: var(--amber);
+    opacity: 0.08;
+    line-height: 1;
+    margin-bottom: -16px;
+    letter-spacing: -0.04em;
+    user-select: none;
+  }
+
+  .step-icon-wrap {
+    width: 48px;
+    height: 48px;
+    background: var(--amber-dim);
+    border: 1px solid var(--amber-mid);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--amber);
+    margin-bottom: 20px;
+    flex-shrink: 0;
+  }
+
+  .step-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .step-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+
+  .step-connector {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .steps {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .step {
+      border-right: none;
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 32px 0;
+    }
+
+    .step:last-child {
+      border-bottom: none;
+    }
+  }
+</style>

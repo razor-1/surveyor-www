@@ -1,0 +1,209 @@
+---
+---
+
+<nav>
+  <div class="container nav-inner">
+    <a href="/" class="logo" aria-label="Codesift home">
+      <svg width="26" height="26" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="32" height="32" rx="7" fill="#E8922A" fill-opacity="0.12"/>
+        <rect x="5" y="8" width="22" height="2.5" rx="1.25" fill="#E8922A"/>
+        <rect x="8" y="13.5" width="16" height="2.5" rx="1.25" fill="#E8922A" opacity="0.75"/>
+        <rect x="11" y="19" width="10" height="2.5" rx="1.25" fill="#E8922A" opacity="0.5"/>
+        <rect x="14" y="24.5" width="4" height="2.5" rx="1.25" fill="#E8922A" opacity="0.3"/>
+      </svg>
+      <span>Codesift</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="#how-it-works">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+    </div>
+
+    <div class="nav-actions">
+      <a href="#" class="nav-signin">Sign in</a>
+      <a href="#" class="btn-primary nav-cta">Get started free</a>
+    </div>
+
+    <button class="mobile-toggle" aria-label="Open menu" id="mobile-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <a href="#how-it-works">How it works</a>
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#" class="btn-primary">Get started free</a>
+  </div>
+</nav>
+
+<script>
+  const toggle = document.getElementById('mobile-toggle');
+  const menu = document.getElementById('mobile-menu');
+  toggle?.addEventListener('click', () => {
+    const open = menu?.getAttribute('aria-hidden') === 'false';
+    menu?.setAttribute('aria-hidden', open ? 'true' : 'false');
+    toggle.classList.toggle('is-open', !open);
+  });
+  menu?.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      menu.setAttribute('aria-hidden', 'true');
+      toggle?.classList.remove('is-open');
+    });
+  });
+</script>
+
+<style>
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--border-subtle);
+    background: rgba(9, 9, 15, 0.82);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    height: 64px;
+    gap: 28px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    flex-shrink: 0;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: color 0.15s;
+    text-decoration: none;
+  }
+
+  .nav-links a:hover {
+    color: var(--text);
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
+  }
+
+  .nav-signin {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: color 0.15s;
+    text-decoration: none;
+  }
+
+  .nav-signin:hover {
+    color: var(--text);
+  }
+
+  .nav-cta {
+    padding: 8px 18px;
+    font-size: 13px;
+  }
+
+  .mobile-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    margin-left: auto;
+  }
+
+  .mobile-toggle span {
+    display: block;
+    width: 20px;
+    height: 1.5px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+
+  .mobile-toggle.is-open span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+  .mobile-toggle.is-open span:nth-child(2) {
+    opacity: 0;
+  }
+  .mobile-toggle.is-open span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    padding: 16px 24px 24px;
+    gap: 4px;
+    border-top: 1px solid var(--border-subtle);
+    background: var(--ink);
+  }
+
+  .mobile-menu[aria-hidden='false'] {
+    display: flex;
+  }
+
+  .mobile-menu a {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-muted);
+    padding: 10px 0;
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-subtle);
+    transition: color 0.15s;
+  }
+
+  .mobile-menu a:hover {
+    color: var(--text);
+  }
+
+  .mobile-menu .btn-primary {
+    margin-top: 12px;
+    text-align: center;
+    justify-content: center;
+    border-bottom: none;
+    color: #07070C;
+  }
+
+  @media (max-width: 768px) {
+    .nav-links,
+    .nav-actions {
+      display: none;
+    }
+    .mobile-toggle {
+      display: flex;
+    }
+  }
+</style>

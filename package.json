@@ -1,0 +1,15 @@
+{
+  "name": "codesift-www",
+  "type": "module",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@iconify-json/ph": "^1.2.2",
+    "astro": "6.0.8",
+    "astro-icon": "^1.1.5"
+  }
+}

@@ -1,0 +1,106 @@
+---
+---
+
+<section class="cta">
+  <div class="cta-glow" aria-hidden="true"></div>
+  <div class="container cta-inner">
+    <p class="section-eyebrow cta-eyebrow">Get started</p>
+    <h2 class="cta-title">
+      Ready to cut your<br>coding costs?
+    </h2>
+    <p class="cta-sub">
+      Start with a free tier — no credit card required. Upload your first
+      dataset and see what Codesift produces in seconds.
+    </p>
+    <div class="cta-actions">
+      <a href="#" class="btn-primary cta-btn-primary">
+        Start for free
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <!--<a href="#" class="btn-secondary">Request a demo</a>-->
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta {
+    border-top: 1px solid var(--border-subtle);
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .cta-glow {
+    position: absolute;
+    top: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(232, 146, 42, 0.09) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .cta-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .cta-eyebrow {
+    justify-content: center;
+  }
+
+  .cta-eyebrow::before {
+    display: none;
+  }
+
+  .cta-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(32px, 5vw, 56px);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+
+  .cta-sub {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text-muted);
+    max-width: 480px;
+    margin-bottom: 36px;
+  }
+
+  .cta-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .cta-btn-primary {
+    padding: 15px 28px;
+    font-size: 15px;
+  }
+
+  .cta-trust {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .sep {
+    color: var(--text-dim);
+  }
+</style>

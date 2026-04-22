@@ -1,0 +1,132 @@
+---
+const features = [
+  {
+    icon: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2L3 7v6l7 5 7-5V7L10 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 12a2 2 0 100-4 2 2 0 000 4z" fill="currentColor" opacity="0.4"/></svg>`,
+    title: 'AI categorization',
+    desc: 'Assign one or multiple codes per response. Handles nuanced, ambiguous, and multi-topic answers with high accuracy.',
+  },
+  {
+    icon: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="3" width="16" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M6 7h8M6 10h6M6 13h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+    title: 'Custom codebooks',
+    desc: 'Define your own categories and hierarchies, or import existing codebooks from Excel or CSV. Your framework, applied consistently.',
+  },
+  {
+    icon: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 4h12v3H4V4zM4 9h12v3H4V9zM4 14h8v3H4v-3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>`,
+    title: 'Bulk processing',
+    desc: 'Code thousands of responses in a single job. Progress tracking, resumable sessions, and async processing for large datasets.',
+  },
+  {
+    icon: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v4l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+    title: 'Confidence scores',
+    desc: 'Every code assignment includes a confidence rating. Automatically flag low-confidence responses for human review and quality control.',
+  },
+  {
+    icon: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M5 6h10M5 14h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M15 13l2 2-2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    title: 'Flexible exports',
+    desc: 'Download coded data as CSV, Excel, or JSON.',
+  },
+  {
+    icon: `<svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M10 3v2M10 15v2M3 10h2M15 10h2M4.93 4.93l1.41 1.41M13.66 13.66l1.41 1.41M4.93 15.07l1.41-1.41M13.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+    title: 'Granular code management',
+    desc: 'Adjust code keywords, definitions, and nets easily. Re-code affected responses. See which portion of a response matched a code.a ',
+  },
+];
+---
+
+<section id="features">
+  <div class="container">
+    <div class="features-header">
+      <p class="section-eyebrow">Features</p>
+      <h2 class="section-title">Everything you need for<br>rigorous qualitative coding</h2>
+    </div>
+
+    <div class="features-grid">
+      {features.map((f) => (
+        <div class="feature-card">
+          <div class="feature-icon" set:html={f.icon} />
+          <h3 class="feature-title">{f.title}</h3>
+          <p class="feature-desc">{f.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .features-header {
+    margin-bottom: 56px;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--border-subtle);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .feature-card {
+    background: var(--ink);
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    transition: background 0.2s;
+  }
+
+  .feature-card:hover {
+    background: var(--surface-1);
+  }
+
+  .feature-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--amber-dim);
+    border: 1px solid var(--amber-mid);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--amber);
+    margin-bottom: 20px;
+    flex-shrink: 0;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .feature-card:hover .feature-icon {
+    background: var(--amber-mid);
+    border-color: rgba(232, 146, 42, 0.4);
+  }
+
+  .feature-title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .feature-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 960px) {
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+    .feature-card {
+      padding: 28px 24px;
+    }
+  }
+</style>
