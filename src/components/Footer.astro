@@ -16,6 +16,7 @@ const year = new Date().getFullYear();
         <span>Codesift</span>
       </a>
       <p class="footer-tagline">AI survey coding, priced by data.</p>
+      <a href="mailto:info@codesift.ai" class="footer-contact">info@codesift.ai</a>
     </div>
 
     <nav class="footer-nav" aria-label="Footer navigation">
@@ -67,7 +68,7 @@ const year = new Date().getFullYear();
   .footer-brand {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
   }
 
   .footer-logo {
@@ -85,6 +86,17 @@ const year = new Date().getFullYear();
   .footer-tagline {
     font-size: 13px;
     color: var(--text-muted);
+  }
+
+  .footer-contact {
+    font-size: 14px;
+    color: var(--accent);
+    text-decoration: none;
+    transition: opacity 0.15s;
+  }
+
+  .footer-contact:hover {
+    opacity: 0.8;
   }
 
   .footer-nav {
