@@ -1,0 +1,146 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const { frontmatter } = Astro.props;
+const title = frontmatter?.title || 'Legal';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={`${title} - Codesift`} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>{title} - Codesift</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <Nav />
+    <main class="legal-page">
+      <div class="container">
+        <article class="legal-content">
+          <slot />
+        </article>
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .legal-page {
+    min-height: calc(100vh - 200px);
+    padding: 80px 0;
+  }
+
+  .legal-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .legal-content :global(h1) {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+
+  .legal-content :global(h2) {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin-top: 48px;
+    margin-bottom: 16px;
+  }
+
+  .legal-content :global(h3) {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin-top: 32px;
+    margin-bottom: 12px;
+  }
+
+  .legal-content :global(p) {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  .legal-content :global(ul),
+  .legal-content :global(ol) {
+    margin-bottom: 16px;
+    padding-left: 24px;
+  }
+
+  .legal-content :global(li) {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .legal-content :global(strong) {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .legal-content :global(a) {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s;
+  }
+
+  .legal-content :global(a:hover) {
+    border-bottom-color: var(--accent);
+  }
+
+  .legal-content :global(hr) {
+    border: none;
+    border-top: 1px solid var(--border-subtle);
+    margin: 32px 0;
+  }
+
+  .legal-content :global(code) {
+    font-family: 'SF Mono', Consolas, monospace;
+    font-size: 14px;
+    background: var(--surface-2);
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+
+  @media (max-width: 768px) {
+    .legal-page {
+      padding: 48px 0;
+    }
+
+    .legal-content :global(h1) {
+      font-size: 28px;
+    }
+
+    .legal-content :global(h2) {
+      font-size: 20px;
+      margin-top: 32px;
+    }
+
+    .legal-content :global(h3) {
+      font-size: 16px;
+    }
+  }
+</style>

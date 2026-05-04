@@ -4,6 +4,16 @@
   padding: 0;
 }
 
+::selection {
+  background: var(--amber-mid);
+  color: var(--text);
+}
+
+::-moz-selection {
+  background: var(--amber-mid);
+  color: var(--text);
+}
+
 :root {
   --ink: #09090F;
   --surface-1: #111218;
