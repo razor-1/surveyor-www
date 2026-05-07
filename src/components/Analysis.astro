@@ -1,0 +1,438 @@
+---
+function formatMessage(text: string): string {
+  return text
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\n\n/g, '</p><p>')
+    .replace(/\n/g, '<br>');
+}
+
+const demoMessages = [
+  {
+    role: 'user',
+    text: 'What are the top 3 themes in negative feedback?',
+  },
+  {
+    role: 'assistant',
+    text: 'Based on the coded responses, the top 3 themes are:\n\n**1. UX Friction** (142 mentions)\nUsers report confusion with checkout flow and navigation.\n\n**2. Pricing Concerns** (89 mentions)\nCost is too high for small teams and individual users.\n\n**3. Mobile Experience** (67 mentions)\nApp performance issues on older Android devices.',
+  },
+  {
+    role: 'user',
+    text: 'Show me responses coded as "UX Friction" with low confidence',
+  },
+];
+---
+
+<section id="analysis" class="analysis">
+  <div class="container">
+    <div class="analysis-grid">
+      <!-- Left: Content -->
+      <div class="analysis-content">
+        <p class="section-eyebrow">AI Analysis</p>
+        <h2 class="section-title">
+          Ask questions,<br>
+          <span class="analysis-accent">get insights</span>
+        </h2>
+        <p class="analysis-sub">
+          Chat with AI about your coded data in natural language. No SQL, no pivot tables,
+          no manual filtering — just ask and get instant answers about themes, patterns,
+          and outliers in your survey responses.
+        </p>
+
+        <div class="analysis-features">
+          <div class="analysis-feature">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M9 3v12M3 9h12" stroke="var(--amber)" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span>Explore themes and code distributions</span>
+          </div>
+          <div class="analysis-feature">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <circle cx="9" cy="9" r="6" stroke="var(--amber)" stroke-width="1.5"/>
+              <path d="M14 14l2.5 2.5" stroke="var(--amber)" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span>Filter responses by codes and confidence</span>
+          </div>
+          <div class="analysis-feature">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M3 6l6 5 6-5" stroke="var(--amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M3 11h12" stroke="var(--amber)" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span>Identify patterns</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Chat Demo -->
+      <div class="chat-demo-wrap">
+        <div class="chat-demo-card" role="img" aria-label="Demo showing AI chat interface for survey analysis">
+          <!-- Window chrome -->
+          <div class="chat-chrome">
+            <div class="traffic-lights" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <span class="chat-title">AI Analysis</span>
+          </div>
+
+          <!-- Chat messages -->
+          <div class="chat-messages">
+            {demoMessages.map((msg, i) => (
+              <div class={`chat-message ${msg.role}`} style={`--delay: ${i * 0.8}s`}>
+                <div class="message-avatar">
+                  {msg.role === 'user' ? (
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <circle cx="8" cy="5" r="3" fill="currentColor"/>
+                      <path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6" fill="currentColor"/>
+                    </svg>
+                  ) : (
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <rect x="3" y="3" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                      <circle cx="6" cy="7" r="1" fill="currentColor"/>
+                      <circle cx="10" cy="7" r="1" fill="currentColor"/>
+                      <path d="M6 10c0 1.1.9 2 2 2s2-.9 2-2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                    </svg>
+                  )}
+                </div>
+                <div class="message-content">
+                  <div class="message-label">{msg.role === 'user' ? 'You' : 'AI'}</div>
+                  <div class="message-bubble" set:html={formatMessage(msg.text)} />
+                </div>
+              </div>
+            ))}
+
+            <!-- Typing indicator -->
+            <div class="chat-message assistant typing" style="--delay: 2.4s">
+              <div class="message-avatar">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <rect x="3" y="3" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                  <circle cx="6" cy="7" r="1" fill="currentColor"/>
+                  <circle cx="10" cy="7" r="1" fill="currentColor"/>
+                  <path d="M6 10c0 1.1.9 2 2 2s2-.9 2-2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="message-content">
+                <div class="message-label">AI</div>
+                <div class="message-bubble">
+                  <div class="typing-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Input placeholder -->
+          <div class="chat-input-area">
+            <div class="chat-input-placeholder">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <rect x="2" y="6" width="12" height="7" rx="1.5" stroke="var(--text-dim)" stroke-width="1.3"/>
+                <path d="M5 6V4.5a3 3 0 016 0V6" stroke="var(--text-dim)" stroke-width="1.3" stroke-linecap="round"/>
+              </svg>
+              <span>Ask me anything about your data...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .analysis {
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .analysis::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232, 146, 42, 0.05) 0%, transparent 68%);
+    pointer-events: none;
+  }
+
+  .analysis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  /* Left content */
+  .analysis-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .analysis-content .section-eyebrow {
+    margin-bottom: 16px;
+  }
+
+  .analysis-content .section-title {
+    margin-bottom: 24px;
+  }
+
+  .analysis-accent {
+    color: var(--amber);
+  }
+
+  .analysis-sub {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-muted);
+    max-width: 520px;
+    margin-bottom: 32px;
+  }
+
+  .analysis-features {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .analysis-feature {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .analysis-feature svg {
+    flex-shrink: 0;
+  }
+
+  /* Right chat demo */
+  .chat-demo-wrap {
+    position: relative;
+  }
+
+  .chat-demo-card {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255,255,255,0.03);
+    display: flex;
+    flex-direction: column;
+    height: 520px;
+  }
+
+  .chat-chrome {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: var(--surface-3);
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  .traffic-lights {
+    display: flex;
+    gap: 6px;
+  }
+
+  .traffic-lights span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+
+  .traffic-lights span:nth-child(1) { background: #E05454; opacity: 0.8; }
+  .traffic-lights span:nth-child(2) { background: #E8B42A; opacity: 0.8; }
+  .traffic-lights span:nth-child(3) { background: #4FCB8A; opacity: 0.8; }
+
+  .chat-title {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 500;
+    flex: 1;
+  }
+
+  .chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-height: 0;
+  }
+
+  .chat-message {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    opacity: 0;
+    animation: messageIn 0.4s ease forwards;
+    animation-delay: var(--delay);
+  }
+
+  @keyframes messageIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .message-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .chat-message.user .message-avatar {
+    background: rgba(94, 156, 245, 0.14);
+    color: #5E9CF5;
+    border: 1px solid rgba(94, 156, 245, 0.25);
+  }
+
+  .chat-message.assistant .message-avatar {
+    background: var(--amber-dim);
+    color: var(--amber);
+    border: 1px solid var(--amber-mid);
+  }
+
+  .message-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  .message-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .message-bubble {
+    background: var(--surface-3);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    width: fit-content;
+    max-width: 90%;
+  }
+
+  .chat-message.user .message-bubble {
+    background: rgba(94, 156, 245, 0.08);
+    border-color: rgba(94, 156, 245, 0.15);
+  }
+
+  .message-bubble strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .message-bubble p {
+    margin: 0;
+  }
+
+  .message-bubble p + p {
+    margin-top: 12px;
+  }
+
+  /* Typing indicator */
+  .typing-dots {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+
+  .typing-dots span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--text-dim);
+    animation: typingBounce 1.2s ease-in-out infinite;
+  }
+
+  .typing-dots span:nth-child(1) { animation-delay: 0s; }
+  .typing-dots span:nth-child(2) { animation-delay: 0.15s; }
+  .typing-dots span:nth-child(3) { animation-delay: 0.3s; }
+
+  @keyframes typingBounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+    30% { transform: translateY(-4px); opacity: 1; }
+  }
+
+  /* Chat input area */
+  .chat-input-area {
+    padding: 12px 16px;
+    border-top: 1px solid var(--border);
+    background: var(--surface-3);
+    flex-shrink: 0;
+  }
+
+  .chat-input-placeholder {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius);
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  @media (max-width: 960px) {
+    .analysis-grid {
+      grid-template-columns: 1fr;
+      gap: 56px;
+    }
+
+    .analysis {
+      padding: 80px 0;
+    }
+
+    .chat-demo-card {
+      height: 480px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .analysis-features {
+      gap: 12px;
+    }
+
+    .analysis-feature {
+      font-size: 13px;
+    }
+
+    .chat-demo-card {
+      height: 420px;
+    }
+
+    .chat-messages {
+      padding: 16px;
+      gap: 14px;
+    }
+
+    .message-bubble {
+      font-size: 12px;
+      padding: 9px 12px;
+    }
+  }
+</style>
