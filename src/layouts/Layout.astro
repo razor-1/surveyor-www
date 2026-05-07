@@ -4,12 +4,19 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  canonicalURL?: string;
+  ogImage?: string;
 }
 
 const {
   title,
   description = "AI-powered survey coding. Pay for data processed, not per response. Code open-ended survey responses faster and for far less.",
+  canonicalURL,
+  ogImage = "https://codesift.ai/og-image.png",
 } = Astro.props;
+
+const siteURL = "https://codesift.ai";
+const fullCanonicalURL = canonicalURL || new URL(Astro.url.pathname, siteURL).href;
 ---
 
 <!doctype html>
@@ -18,14 +25,34 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={fullCanonicalURL} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <title>{title}</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={fullCanonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={fullCanonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
     <link
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap"
       rel="stylesheet"
     />
+
+    <slot name="structured-data" />
   </head>
   <body>
     <slot />

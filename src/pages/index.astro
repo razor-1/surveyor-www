@@ -3,18 +3,33 @@ import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
 import HowItWorks from '../components/HowItWorks.astro';
+import UseCases from '../components/UseCases.astro';
 import Features from '../components/Features.astro';
 import PricingComparison from '../components/PricingComparison.astro';
 // import Testimonials from '../components/Testimonials.astro';
 import CallToAction from '../components/CallToAction.astro';
 import Footer from '../components/Footer.astro';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Codesift",
+  "applicationCategory": "BusinessApplication",
+  "url": "https://codesift.ai",
+  "description": "AI-powered survey coding that categorizes open-ended survey responses into codes. Pay for data processed, not per response.",
+};
 ---
 
-<Layout title="Codesift — AI Survey Coding, Priced by Data">
+<Layout
+  title="Codesift — AI Survey Coding, Priced by Data"
+  description="AI-powered survey coding. Pay for data processed, not per response. Code open-ended survey responses faster and for far less."
+>
+  <script slot="structured-data" type="application/ld+json" is:inline set:html={JSON.stringify(structuredData)} />
   <Nav />
   <main>
     <Hero />
     <HowItWorks />
+    <UseCases />
     <Features />
     <PricingComparison />
     <!--<Testimonials />-->

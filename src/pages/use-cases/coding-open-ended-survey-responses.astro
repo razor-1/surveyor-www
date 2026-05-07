@@ -1,0 +1,214 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout
+  title="AI Coding for Open-Ended Survey Responses | Codesift"
+  description="Codesift uses AI to categorize open-ended survey responses into codes — faster and more consistent than manual coding."
+>
+  <Nav />
+  <main class="content-page">
+    <div class="container">
+      <article class="article">
+        <h1>AI Coding for Open-Ended Survey Responses</h1>
+
+        <p class="lead">
+          Manual coding of open-ended survey responses is time-intensive and inconsistent at scale. Codesift uses AI to categorize responses into your defined codes — faster, more consistent, and dramatically more affordable than traditional methods.
+        </p>
+
+        <h2>The Traditional Coding Problem</h2>
+
+        <p>
+          When you collect open-ended survey responses, you're left with hundreds or thousands of unstructured text answers. To make sense of this data, researchers have traditionally relied on manual coding: reading each response, identifying themes, and assigning categorical codes. This process is essential for analysis, but has several challenges.
+        </p>
+
+        <p>
+          Manual coding is slow. A single researcher can code 50-100 responses per hour at best. With a dataset of 2,000 responses, you're looking at 20-40 hours of work — and that's after you've developed your codebook. The timeline extends further if you need inter-rater reliability checks or multiple coders.
+        </p>
+
+        <p>
+          Worse, manual coding becomes inconsistent as the dataset grows. Coder fatigue sets in. Definitions drift. A response coded one way on Monday might be coded differently on Friday. Even with multiple coders and careful documentation, achieving high inter-rater reliability is challenging and adds more time to the process.
+        </p>
+
+        <h2>How Codesift Helps</h2>
+
+        <p>
+          Codesift brings AI to the coding process without sacrificing control. You define your codes (or allow AI to suggest them) and their criteria — the AI applies them consistently across every response in your dataset. The result is a complete coding pass in minutes, not days, with consistency that doesn't degrade over time.
+        </p>
+
+        <p>
+          The workflow is straightforward. Upload your survey data. Define your codes with natural-language descriptions: what each code means, keywords, and sample responses that match. Codesift processes your responses and returns coded data ready for analysis.
+        </p>
+
+        <p>
+          Because the AI follows your definitions exactly, the coding is consistent from the first response to the last. You can refine your codebook and re-code instantly — something that would take hours with manual coding. And unlike automated sentiment tools or topic models, you maintain complete control over the categories.
+        </p>
+
+        <h2>Who It's Built For</h2>
+
+        <p>
+          Codesift is designed for independent market research consultants, freelance UX researchers, and research teams who need to deliver coded qualitative data quickly and professionally. If you regularly work with open-ended survey questions — customer feedback forms, concept tests, post-interview verbatims, NPS comments — Codesift handles the repetitive coding work so you can focus on insight generation and client deliverables.
+        </p>
+
+        <p>
+          The pricing model reflects this reality. Traditional auto-coding tools charge per response, making large datasets prohibitively expensive. Codesift charges by data processed — tokens or characters — which typically costs 10-50x less for the same job. A 2,000-response dataset might cost $40-80 with per-response pricing, but only $2-5 with Codesift. The economics finally make sense for consultants working on lean budgets.
+        </p>
+
+        <div class="cta-box">
+          <h3>Start Coding in Minutes</h3>
+          <p>Upload your first dataset and see how fast AI coding can be. No credit card required to start.</p>
+          <a href="https://app.codesift.ai" class="btn-primary">Get started free</a>
+        </div>
+      </article>
+
+      <div class="related-links">
+        <h3>Related resources</h3>
+        <ul>
+          <li><a href="/use-cases/thematic-analysis-for-consultants">Thematic Analysis for Market Research Consultants</a></li>
+          <li><a href="/use-cases/qualitative-survey-coding-ai">Qualitative Survey Coding with AI</a></li>
+          <li><a href="/compare/manual-vs-ai-coding">Manual vs AI Coding Comparison</a></li>
+        </ul>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .content-page {
+    min-height: 100vh;
+    padding-top: 120px;
+    padding-bottom: 80px;
+  }
+
+  .article {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    margin-bottom: 24px;
+  }
+
+  .lead {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-top: 48px;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+  }
+
+  .cta-box {
+    background: var(--surface-1);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 32px;
+    margin-top: 48px;
+    text-align: center;
+  }
+
+  .cta-box h3 {
+    margin-bottom: 8px;
+  }
+
+  .cta-box p {
+    margin-bottom: 24px;
+    color: var(--text-muted);
+  }
+
+  .related-links {
+    max-width: 720px;
+    margin: 48px auto 0;
+    padding-top: 32px;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .related-links h3 {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  .related-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .related-links a {
+    font-size: 15px;
+    color: var(--accent);
+    text-decoration: none;
+    transition: opacity 0.15s;
+  }
+
+  .related-links a:hover {
+    opacity: 0.8;
+  }
+
+  @media (max-width: 768px) {
+    .content-page {
+      padding-top: 96px;
+      padding-bottom: 60px;
+    }
+
+    h1 {
+      font-size: 32px;
+    }
+
+    .lead {
+      font-size: 16px;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-top: 36px;
+    }
+
+    .cta-box {
+      padding: 24px;
+    }
+  }
+</style>
